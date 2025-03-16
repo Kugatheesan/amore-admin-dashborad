@@ -23,6 +23,8 @@ import { BE_URL } from "../utils/Constant";
     const [newCategory, setNewCategory] = useState({ name: "", description: "", service_id: "" });
     const [showConfirmDelete, setShowConfirmDelete] = useState<boolean>(false);
     const [itemToDelete, setItemToDelete] = useState<{ id: number; type: "service" | "category" } | null>(null);
+    const [showServiceModal, setShowServiceModal] = useState<boolean>(false);
+    const [showCategoryModal, setShowCategoryModal] = useState<boolean>(false);
     const navigate = useNavigate();
 
     // Fetch services and categories
@@ -54,6 +56,7 @@ import { BE_URL } from "../utils/Constant";
         .then((response) => {
           setServices([...services, response.data.service]);
           setNewServiceName("");
+          setShowServiceModal(false);
           window.location.reload();// Navigate to the same page
         })
         .catch((error) => console.error("Error adding service:", error));
@@ -86,7 +89,6 @@ import { BE_URL } from "../utils/Constant";
             .then(() => {
               setServices(services.filter(service => service.id !== id));
               setShowConfirmDelete(false);
-              alert("Service deleted successfully");
               navigate("/events"); // Navigate to the same page
             })
             .catch((error) => {
@@ -98,7 +100,6 @@ import { BE_URL } from "../utils/Constant";
             .then(() => {
               setCategories(categories.filter(category => category.id !== id));
               setShowConfirmDelete(false);
-              alert("Category deleted successfully");
               navigate("/events"); // Navigate to the same page
             })
             .catch((error) => {
@@ -122,22 +123,30 @@ import { BE_URL } from "../utils/Constant";
     return (
       <div className="content">
         <h2>Services & Categories</h2>
-      
-        <div>
-          <h3>Add Service</h3>
-          <input
-            className="first-box"
-            type="text"
-            placeholder="Enter service name"
-            value={newServiceName}
-            onChange={(e) => setNewServiceName(e.target.value)}
-          />
-          <button className="add-service-button" onClick={handleAddService}>Add Service</button>
+
+        <div className="btn-group">
+        <button className="add-button" onClick={() => setShowServiceModal(true)}>+ Add Service</button>
+        <button className="add-button" onClick={() => setShowCategoryModal(true)}>+ Add Category</button>
         </div>
 
+         {showServiceModal && (
+        <div className="modal-overlay">
+           <div className="modal">
+             <h3>Add Service</h3>
+             <input
+               type="text"
+               placeholder="Enter service name"
+               value={newServiceName}
+               onChange={(e) => setNewServiceName(e.target.value)}
+             />
+             <button className="add-btn" onClick={handleAddService}>Add</button>
+             <button className="cancel-btn" onClick={() => setShowServiceModal(false)}>Cancel</button>
+           </div>
+         </div>
+      )}
       
         <h3>Services</h3>
-        <table>
+        <table className="event-table ">
           <thead>
             <tr>
               <th>ID</th>
@@ -155,37 +164,36 @@ import { BE_URL } from "../utils/Constant";
             ))}
           </tbody>
         </table>
-
-        
-        <div>
-          <h3>Add Category</h3>
-          <input
-            className="first-box"
-            type="text"
-            placeholder="Enter category name"
-            value={newCategory.name}
-            onChange={(e) => setNewCategory({ ...newCategory, name: e.target.value })}
-          />
-          <input
-            className="first-box"
-            type="text"
-            placeholder="Enter description"
-            value={newCategory.description}
-            onChange={(e) => setNewCategory({ ...newCategory, description: e.target.value })}
-          />
-          <input
-            className="first-box"
-            type="number"
-            placeholder="Enter Service ID"
-            value={newCategory.service_id}
-            onChange={(e) => setNewCategory({ ...newCategory, service_id: e.target.value })}
-          />
-          <button className="add-service-button" onClick={handleAddCategory}>Add Category</button>
-        </div>
-
+        {showCategoryModal && (
+         <div className="modal-overlay">
+           <div className="modal">
+             <h3>Add Category</h3>
+             <input
+               type="text"
+               placeholder="Enter category name"
+               value={newCategory.name}
+               onChange={(e) => setNewCategory({ ...newCategory, name: e.target.value })}
+             />
+             <input
+              type="text"
+               placeholder="Enter description"
+               value={newCategory.description}
+               onChange={(e) => setNewCategory({ ...newCategory, description: e.target.value })}
+             />
+            <input
+               type="number"
+               placeholder="Enter Service ID"
+               value={newCategory.service_id}
+               onChange={(e) => setNewCategory({ ...newCategory, service_id: e.target.value })}
+            />
+             <button className="add-btn" onClick={handleAddCategory}>Add</button>
+             <button className="cancel-btn" onClick={() => setShowCategoryModal(false)}>Cancel</button>
+          </div>
+       </div>
+      )}
       
         <h3>Categories</h3>
-        <table>
+        <table className="event-table">
           <thead>
             <tr>
               <th>ID</th>

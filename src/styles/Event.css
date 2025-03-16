@@ -19,35 +19,6 @@ h2, h3 {
     color: #333;
 }
 
-.first-box {
-    width: 100%;
-    max-width: 400px;
-    padding: 12px 15px;
-    border: 2px solid #b700ff;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: all 0.3s ease-in-out;
-    background: #f8f9fa;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.first-box:focus {
-    border-color: #0056b3;
-    outline: none;
-    box-shadow: 0 0 8px rgba(0, 91, 187, 0.5);
-    background: #ffffff;
-}
-
-.first-box::placeholder {
-    color: #888;
-    font-style: italic;
-}
-
-.first-box:hover {
-    border-color: #0056b3;
-    background: #ffffff;
-}
-
 .add-service-button, .delete-button {
     background: linear-gradient(135deg, #0d4077, #405872);
     color: white;
@@ -147,3 +118,190 @@ tbody tr:nth-child(even) {
     background-color: #4caf50;
     color: white;
 }
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+  }
+  
+  .modal {
+    background: white;
+    padding: 45px;
+    width: 400px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: fadeIn 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+  
+  .modal h3 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333333;
+  }
+  
+  .modal input {
+    width: 90%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border 0.3s ease-in-out;
+  }
+  
+  .modal input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  }
+  
+  .modal button {
+    flex: 1;
+    padding: 12px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .add-btn {
+    width: 150px;
+    background: #007bff;
+    color: white;
+  }
+  
+  .add-btn:hover {
+    background: #0056b3;
+  }
+  
+  .cancel-btn {
+    width: 150px;
+    background: #bb3631;
+    color: white;
+  }
+  
+  .cancel-btn:hover {
+    background: #743037;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .modal {
+      width: 90%;
+      padding: 20px;
+    }
+  }
+  
+.btn-group{
+    display: flex;
+    justify-content: space-around;
+}
+  .add-button {
+    background-color: #4e0542fb;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .add-button:hover {
+    background-color: #0056b3; 
+  }
+  
+  .add-button:active {
+    transform: scale(0.98);
+  }
+  
+  .add-button:focus {
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.6);
+  }
+  
+.delete-button {
+  background: #160869;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease-in-out;
+}
+
+.delete-button:hover {
+  background: #d43f3f;
+}
+
+
+.event-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.event-table th,
+.event-table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd; 
+}
+
+.event-table th {
+  background-color: #f4f4f4;
+}
+
+.event-table td {
+  word-wrap: break-word; 
+}
+
+.event-table th:nth-child(1),
+.event-table td:nth-child(1) {
+  width: 20%; 
+}
+
+.event-table th:nth-child(2),
+.event-table td:nth-child(2) {
+  width: 20%; 
+}
+
+.event-table th:nth-child(3),
+.event-table td:nth-child(3) {
+  width: 20%; 
+}
+
+.event-table th:nth-child(4),
+.event-table td:nth-child(4) {
+  width: 20%; 
+}
+

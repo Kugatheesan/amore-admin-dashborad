@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/Login.css";
+import eventImage from '../assets/67763d8a2775bee07438e7a5_Events.png';
+
 import { BE_URL } from "../utils/Constant";
 
 interface LoginProps {
@@ -57,7 +59,9 @@ function Login({ setIsAuthenticated }: LoginProps) {
   return (
     <div className="signin-container">
     <div className="signin-box">
-      <div className="signin-image"></div> {/* Image Inside Box */}
+
+    <div className="signin-image" style={{ backgroundImage: `url(${eventImage})` }}></div>
+    
       <div className="signin-content">
         <h3>Admin Sign in</h3>
         <form onSubmit={handleLogin}>

@@ -33,7 +33,6 @@ const App: React.FC = () => {
             <Route path="/users" element={isAuthenticated ? <Users /> : <Navigate to="/login" />} />
             <Route path="/bookings" element={isAuthenticated ? <Bookings /> : <Navigate to="/login" />} />
             <Route path="/events" element={isAuthenticated ? <Events /> : <Navigate to="/login" />} />
-            {/* Catch all undefined routes */}
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>
@@ -44,12 +43,3 @@ const App: React.FC = () => {
 
 export default App;
 
-
-
-
-
-// import Sidebar from "./componts/Sidebar";
-// import Users from "./componts/Users";
-// import Bookings from "./componts/Booking";
-// import Events from "./componts/Events";
-// import Login from "./componts/login";

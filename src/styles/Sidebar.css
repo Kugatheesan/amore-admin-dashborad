@@ -54,7 +54,8 @@ nav ul li a {
 }
 
 .sign-out-button {
-  background:linear-gradient(135deg, #ff41d8, #2c1e1e8f);  border: none;
+  background: linear-gradient(135deg, #4e0542fb, #8b73738f);
+  border: none;
   color: white;
   cursor: pointer;
   padding: 12px;
